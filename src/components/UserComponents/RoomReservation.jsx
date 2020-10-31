@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "../Utilities/Button";
+import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 
 class RoomReservation extends React.Component{
@@ -24,7 +26,7 @@ class RoomReservation extends React.Component{
                 'Business',
                 'Convalescence'
             ],
-
+            
             roomPrice: [
                 40000,
                 28000,
@@ -32,8 +34,12 @@ class RoomReservation extends React.Component{
             ],
 
             roomReservationDetails: {},
-            // This variable helps in toggling the display of choice menu for room-type
-            toggleRoomTypeDisplay: false
+
+            formErrorDetails: {},
+
+            // This variable helps in toggling the display of room list when a
+            // user fills in the room-reservation form
+            toggleRoomListDisplay: false,
 
         }
     }
@@ -87,6 +93,7 @@ class RoomReservation extends React.Component{
 
         }
 
+        // pass values
         this.updateReservationDetails(event.target.name, event.target.value)
     }
 
@@ -107,6 +114,32 @@ class RoomReservation extends React.Component{
         console.log("\n\t Details: ", this.state.roomReservationDetails)
     }
 
+    handleShowRoomList = (event) => {
+        event.preventDefault();
+        // Submit users data in order to reserve room(s)
+        axios.post("http://127.0.0.1:8000/hotels/create-occupant/",{
+            "firstname": this.state.roomReservationDetails.Firstname,
+            "lastname": this.state.roomReservationDetails.Lastname,
+            "email": this.state.roomReservationDetails.Email,
+            "phone": this.state.roomReservationDetails.Phone,
+            "check_in_date": this.state.roomReservationDetails['Check-in-date'],
+            "duration": this.state.roomReservationDetails.Duration,
+            "check_out_date": this.state.roomReservationDetails['Check-out-date'],
+            "cost": this.state.roomReservationDetails.Cost,
+        }).then( response => {
+            console.log("\n\t Status: ", response.status )
+            this.setState({ toggleRoomListDisplay: true })
+
+        }).catch( error => {
+            console.log("\n\t There were errors...")
+            this.setState({ formErrorDetails: error.response.data })
+            console.log("\n\t Errors: ", error.response.data )
+            console.log("\n\t State Errors: ", this.state.formErrorDetails )
+
+        })
+
+    }
+
     render(){
         let formFields = [];
         for(let key in this.state.roomReservationForm){
@@ -125,20 +158,23 @@ class RoomReservation extends React.Component{
 
         return(
             <div>
-
                 <div className='row mt-3'>
                     <div className='col-3 ml-3 mr-5 mt-5'></div>
-                    <div className='col-3 ml-5'><h3  className='col- mt-5 ml-5'>Room Reservation:</h3></div>
-
+                    <div className='col-3 ml-5'>
+                        <h3 className='col- mt-5 ml-5'>Room Reservation:</h3>
+                    </div>
                 </div>
 
                 <div className='row'>
-                <div className='col-3 ml-5 mr-3'></div>
+                    <div className='col-3 ml-5 mr-3'></div>
                     <div style={formStyle} className='col-4 m-3 form-group'>
                         {
                             formFields.map( field =>
                                 <div key={field}>
+                                    {/* place fields */}
                                     <h5 className='mt-3'>{field}:</h5>
+                                    {/* place any field error */}
+                                    <h4>{ this.state.formErrorDetails[`${field.toLowerCase()}`] }</h4>
                                     {
                                         field !== 'Room-type'?
                                         <input className='pl-2 mb-3 form-control' 
@@ -158,33 +194,42 @@ class RoomReservation extends React.Component{
                                         />
                                         :
                                         <select className='form-control'
-                                               name={field}
-                                               onChange={this.handleChange}
-                                               value={this.state.roomReservationForm[field]}
-                                               >
-                                                   <option value=''>Select room type</option>
-                                                   {
-                                                       this.state.roomType.map( (roomType, index) => 
-                                                        <option key={index} value={roomType}>
-                                                            {this.state.roomReservationForm['Cost']===''?
-                                                            roomType.concat(' ', '-', ' ', '#',this.state.roomPrice[index]):roomType}
-                                                        </option>
-                                                        )
-                                                   }
+                                            name={field}
+                                            onChange={this.handleChange}
+                                            value={this.state.roomReservationForm[field]}
+                                            >
+                                            <option value=''>Select room type</option>
+                                            {
+                                                this.state.roomType.map( (roomType, index) => 
+                                                <option key={index} value={roomType}>
+                                                    {this.state.roomReservationForm['Cost']===''?
+                                                    roomType.concat(' ', '-', ' ', '#',this.state.roomPrice[index]):roomType}
+                                                </option>
+                                                )
+                                            }
                                         </select>
                                     }
-                                    
                                 </div>
-                                )
+                            )
                         }
                         <div className='mb-2'>
-                            <Button action='Available Rooms' path='room-details' />
+                            <Button action='Available Rooms' path='roomlist'
+                                    showRoomList={ this.handleShowRoomList } />
                         </div>
                     </div>
-                    
                 </div>
 
-
+                {
+                    this.state.toggleRoomListDisplay === true ?
+                        <Redirect to={{
+                            pathname: '/roomlist',
+                            state: { "room_type": this.state.roomReservationForm["Room-type"] }
+                            }}
+                        />
+                        :
+                        <Redirect to='/reservation' />
+                }
+                
             </div>
         )
     }

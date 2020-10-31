@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 class Button extends React.Component{
     render(){
         const { action, path, submitRegistration,
-                submitLogin, logoutHandler, resetPassword } = this.props;
+                submitLogin, logoutHandler, resetPassword,
+                showRoomList } = this.props;
 
         return(
             <div>
@@ -22,10 +23,14 @@ class Button extends React.Component{
                     <Link to='/forgot-password' className='btn btn-secondary'>{path}</Link>
                     :
                     path === 'username-login' ?
-                    <Link to={`${path}`} className='btn btn-info'>{action}</Link>
+                    <Link to={`${path}`} className='btn btn-info'>
+                        {action}
+                    </Link>
                     :
-                    path === 'room-details' ?
-                    <Link to={`${path}`} className='btn btn-info'>{action}</Link>
+                    path === 'roomlist' ?
+                    <Link to={`${path}`} onClick={ showRoomList } className='btn btn-info'>
+                        {action}
+                    </Link>
                     :
                     // Submit 'sign-in form' for validation
                     action === 'Sign up' ?
@@ -38,6 +43,9 @@ class Button extends React.Component{
                     <button className='btn btn-success' onClick={logoutHandler}>{action}</button>
                     :
                     action === 'Reset password' ?
+                    <button className='btn btn-success' onClick={resetPassword}>{action}</button>
+                    :
+                    action === 'Book room' ?
                     <button className='btn btn-success' onClick={resetPassword}>{action}</button>
                     :
                     <Link to='/' className='btn btn-primary'>Go Back To Homepage</Link>
