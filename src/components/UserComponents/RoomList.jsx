@@ -14,8 +14,7 @@ class RoomList extends React.Component{
     }
 
     componentDidMount(){
-        const { room_type } = this.props.location.state;
-        axios.get(`http://127.0.0.1:8000/hotels/roomslist/${room_type}/`)
+        axios.get(`http://127.0.0.1:8000/hotels/roomslist/`)
         .then( response => {
             this.setState({ listOfRooms: response.data })
             console.log("\n\t Rooms: ", response.data )

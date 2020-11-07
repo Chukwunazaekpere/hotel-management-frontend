@@ -12,12 +12,12 @@ class Button extends React.Component{
             <div>
                 {
                     // Navigate user to "Log -in" page
-                    path === 'Login' ?
+                    path === 'Complete your reservation' ?
                     <Link to={`${path}`} className='btn btn-secondary'>{path}</Link>
                     :
                     // Navigate user to "Sign -in" page
-                    path === 'Sign-in' ?
-                    <Link to='/signin' className='btn btn-secondary'>{path}</Link>
+                    path === 'Make reservation' ?
+                    <Link to='/occupant-details' className='btn btn-secondary'>{path}</Link>
                     :
                     path === 'Forgot password ?' ?
                     <Link to='/forgot-password' className='btn btn-secondary'>{path}</Link>
@@ -36,7 +36,7 @@ class Button extends React.Component{
                     action === 'Sign up' ?
                     <button className='btn btn-success' onClick={submitRegistration}>{action}</button>
                     :
-                    action === 'Log in' ?
+                    action === 'Complete your reservation' ?
                     <button className='btn btn-success' onClick={submitLogin}>{action}</button>
                     :
                     action === 'Log out' ?

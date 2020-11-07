@@ -11,11 +11,11 @@ export const Homepage = (props) => {
 
     const authentication =  <div className="row">
                                 <div className="col">
-                                    <Button path="Login" />
+                                    <Button path="Complete your reservation" />
                                 </div>
 
                                 <div className="col">
-                                    <Button path="Sign-in" />
+                                    <Button path="Make reservation" />
                                 </div>
                             </div>
     //=======================================================================

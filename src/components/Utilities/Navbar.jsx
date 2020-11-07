@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import Button from './Button';
 
-import { Prompt } from "react-router-dom";
+// import { Prompt } from "react-router-dom";
 import authstate from "../Authentication/AuthState";
 
 class  Navbar extends React.Component{
@@ -12,7 +12,7 @@ class  Navbar extends React.Component{
     }
 
     render(){
-        const navLinkItems = ["Home", "Services", "About-us", "Contact-us"] 
+        const navLinkItems = ["Home", "Services", "About", "Contact-us"] 
         console.log(this.props.children)
         const activeItem = {
             // backgroundColor: 'teal',
@@ -30,7 +30,7 @@ class  Navbar extends React.Component{
             <div style={navbarStyle} className='row'>
 
                 <div className='col-4 mr-2 ml-2 mt-3'>
-                    <h3>Company name</h3>
+                    <h3>Hotel Celestial</h3>
                 </div>
 
                 {
