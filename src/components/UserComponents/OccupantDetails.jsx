@@ -3,6 +3,10 @@ import Button from "../Utilities/Button";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
+import hotel1 from "../../images/hotel 1.jpg";
+import '../../index.css';
+
+
 class RoomReservation extends React.Component {
   constructor(props) {
     super(props);
@@ -73,6 +77,14 @@ class RoomReservation extends React.Component {
       formFields.push(key);
     }
 
+    // const image_style = {
+    //   backgroundPosition: 'center',
+    //   backgroundImage: hotel1,
+    //   height: "100%",
+    //   backgroundRepeat: 'no-repeat',
+    //   backgroundSize: "cover",
+    // };
+
     const formStyle = {
       backgroundColor: "peru",
       border: "30px",
@@ -80,20 +92,27 @@ class RoomReservation extends React.Component {
       borderRadius: "10px",
       color: "black",
       fontFamily: "Georgia, Verdana, Geneva, Tahoma, sans-serif",
-      // borderImage: url(),
     };
 
     return (
       <div>
+        {/* <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src={hotel1}></iframe>
+        </div> */}
+          
         <div className="row mt-3">
-          <div className="col-2 ml-3 mr-5 mt-5"></div>
-          <div className="col-5 ml-5">
-            <h3 className="col- mt-5 ml-5">Please fill in the required details to see the available rooms.</h3>
-          </div>
+            <div className="col-2 ml-3 mr-5 mt-5"></div>
+          
+            <div className="col-5 ml-5">
+                <h3 className="col- mt-5 ml-5">
+                Please fill in the required details to see the available rooms.
+                </h3>
+            </div>
         </div>
 
         <div className="row">
-          <div className="col-3 ml-5 mr-3"></div>
+          <div className="col-4 ml-2 mr-1"></div>
+          
           <div style={formStyle} className="col-4 m-3 form-group">
             {formFields.map((field) => (
               <div key={field}>
@@ -109,16 +128,11 @@ class RoomReservation extends React.Component {
                         ? "email"
                         : field === "Phone"
                         ? "tel"
-                        : field === "Check-in-date"
-                        ? "datetime-local"
                         : field === "Duration"
                         ? "number"
                         : "text"
                     }
                     min={field === "Duration" ? 1 : ""}
-                    disabled={
-                      field === "Check-out-date" || field === "Cost" ? true : ""
-                    }
                     onChange={this.handleChange}
                     value={this.state.roomReservationForm[field]}
                     name={field}

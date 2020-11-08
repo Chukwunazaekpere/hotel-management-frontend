@@ -23,7 +23,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 
-  color: ;
+}
+
+.image_style {
+  background-size: cover;
+  /* display: block; */
+  max-width: 100%;
+  height: 100%;
+  background-size: 100rem;
 }
 
 .App-link {
