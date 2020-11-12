@@ -3,8 +3,8 @@ import Button from "../Utilities/Button";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-import hotel1 from "../../images/hotel 1.jpg";
 import '../../index.css';
+import 'animate.css';
 
 
 class RoomReservation extends React.Component {
@@ -52,7 +52,7 @@ class RoomReservation extends React.Component {
     event.preventDefault();
     // Submit users data in order to reserve room(s)
     axios
-      .post("http://localhost:8000/hotels/create-occupant/", {
+      .post("http://localhost:8000/create-occupant/", {
         firstname: this.state.roomReservationDetails.Firstname,
         lastname: this.state.roomReservationDetails.Lastname,
         email: this.state.roomReservationDetails.Email,
@@ -77,14 +77,6 @@ class RoomReservation extends React.Component {
       formFields.push(key);
     }
 
-    // const image_style = {
-    //   backgroundPosition: 'center',
-    //   backgroundImage: hotel1,
-    //   height: "100%",
-    //   backgroundRepeat: 'no-repeat',
-    //   backgroundSize: "cover",
-    // };
-
     const formStyle = {
       backgroundColor: "peru",
       border: "30px",
@@ -96,16 +88,12 @@ class RoomReservation extends React.Component {
 
     return (
       <div>
-        {/* <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src={hotel1}></iframe>
-        </div> */}
-          
         <div className="row mt-3">
             <div className="col-2 ml-3 mr-5 mt-5"></div>
           
-            <div className="col-5 ml-5">
+            <div className="animate__animated animate__bounce col-5 ml-5">
                 <h3 className="col- mt-5 ml-5">
-                Please fill in the required details to see the available rooms.
+                  Please fill in the required details to see the available rooms.
                 </h3>
             </div>
         </div>
@@ -113,14 +101,13 @@ class RoomReservation extends React.Component {
         <div className="row">
           <div className="col-4 ml-2 mr-1"></div>
           
-          <div style={formStyle} className="col-4 m-3 form-group">
-            {formFields.map((field) => (
+          <div style={formStyle} className="animate__animated animate__swing col-4 m-3 form-group">
+            {formFields.map( field => (
               <div key={field}>
                 {/* place fields */}
                 <h5 className="mt-3">{field}:</h5>
                 {/* place any field error */}
                 <h4>{this.state.formErrorDetails[`${field.toLowerCase()}`]}</h4>
-                {field !== "Room-type" ? (
                   <input
                     className="pl-2 mb-3 form-control"
                     type={
@@ -145,30 +132,7 @@ class RoomReservation extends React.Component {
                         ? "Your surname, please."
                         : ""
                     }
-                  />
-                ) : (
-                  <select
-                    className="form-control"
-                    name={field}
-                    onChange={this.handleChange}
-                    value={this.state.roomReservationForm[field]}
-                  >
-                    <option value="">Select room type</option>
-                    {this.state.roomType.map((roomType, index) => (
-                      <option key={index} value={roomType}>
-                        {this.state.roomReservationForm["Cost"] === ""
-                          ? roomType.concat(
-                              " ",
-                              "-",
-                              " ",
-                              "#",
-                              this.state.roomPrice[index]
-                            )
-                          : roomType}
-                      </option>
-                    ))}
-                  </select>
-                )}
+                  />                  
               </div>
             ))}
             <div className="mb-2">
@@ -181,19 +145,21 @@ class RoomReservation extends React.Component {
           </div>
         </div>
 
-        {this.state.toggleRoomListDisplay === true ? (
-          // We're passing 'room_type' to the state props, 'cos we'll need
-          // to call the roomlist, which will then querry the backend
-          // for a request with the 'room_type'.
-          <Redirect
-            to={{
-              pathname: "/roomlist",
-              state: { room_type: this.state.roomReservationForm["Room-type"] },
-            }}
-          />
-        ) : (
-          <Redirect to="/occupant-details" />
-        )}
+        {
+          this.state.toggleRoomListDisplay === true ? (
+            // We're passing 'room_type' to the state props, 'cos we'll need
+            // to call the roomlist, which will then querry the backend
+            // for a request with the 'room_type'.
+            <Redirect
+              to={{
+                pathname: "/roomlist",
+                state: { occupant_details: this.state.roomReservationDetails },
+              }}
+            />
+          ) : (
+            <Redirect to="/occupant-details" />
+          )
+        }
       </div>
     );
   }
