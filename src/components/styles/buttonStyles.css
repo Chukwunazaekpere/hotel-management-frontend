@@ -1,0 +1,13 @@
+.btn-payment {
+    background-color: tan;
+
+}
+
+.btn-payment:hover {
+    background-color: cornflowerblue;
+}
+
+.btn-styles {
+    border-bottom: tan;
+    box-shadow: 4px 4px teal;
+}
