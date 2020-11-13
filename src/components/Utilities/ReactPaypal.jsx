@@ -1,9 +1,9 @@
 import React from "react";
 
 export const ReactPaypal = () => {
-    return(
+    return (
         <div>
-            
+            <h2>Payment page:</h2>
         </div>
     );
 }

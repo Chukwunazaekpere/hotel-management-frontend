@@ -1,6 +1,8 @@
 .reservation_style {
     display: flex;
-    background-image: url(../../images/hotel\ 3.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../../images/hotel\ 3.jpg);
+    background-size: cover;
+    background-position: center;
     min-height: 100vh;
 
 }
@@ -12,13 +14,19 @@
     margin-bottom: 15%;
     left: 18%;
     background-color: cornflowerblue;
-    border: '30px dashed cornflowerblue';
-    border-color: '#282c34';
-    border-radius: '40px';
-    color: 'black';
-    font-family: "Georgia, Verdana, Geneva, Tahoma, sans-serif";
+    border: 10px solid cornflowerblue;
+    border-color: #282c34;
+    border-radius: 25px;
+    
+    /* color: black; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+                     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     min-height: 15%;
     width: 40%;
     justify-content: center;
     align-items: center;
+    box-shadow: 5px 5px teal;
+    border-bottom: rgb(75, 58, 36);
+    transition: 0.5s ease;
+    /* border-right: rgb(75, 58, 36);  */
   }

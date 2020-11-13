@@ -4,6 +4,7 @@ import Button from "../Utilities/Button";
 
 import '../styles/roomReservationStyles.css';
 import 'animate.css';
+import { Redirect } from 'react-router-dom';
 
 
 class RoomReservation extends React.Component {
@@ -13,11 +14,17 @@ class RoomReservation extends React.Component {
         this.state = {
             room_details: {},
 
-            occupants_phone: ''
+            occupants_phone: '',
+
+            // Whenever the component mounts, the 'toggleRoute' 
+            // property is set to 'false'.
+            toggleRoute: ''
+            
         }
     }
 
     componentDidMount (){
+        this.setState({ toggleRoute: false })
         if ( this.props.location.state ) {
             const { room_details } = this.props.location.state;
             console.log("Room Details", room_details)
@@ -31,6 +38,12 @@ class RoomReservation extends React.Component {
         event.preventDefault();
         this.setState({ occupants_phone: event.target.value })
 
+    }
+
+    toggleRoute = (event) => {
+        event.preventDefault();
+        this.setState({ toggleRoute: true });
+        console.log("\n\t Value: ", this.state.toggleRoute )
     }
 
     render () {
@@ -55,8 +68,7 @@ class RoomReservation extends React.Component {
                                 <input className='col form-control'
                                     disabled={true}
                                     name={field}
-                                    defaultValue={this.state.room_details[field_values[0]]}
-                                    value={this.state.room_details[field_values[0]]}
+                                    defaultValue={this.state.room_details[field_values[index]]}
 
                                     />
                             </span>
@@ -71,11 +83,15 @@ class RoomReservation extends React.Component {
 
                 <section className='form-style form-group col-4 ml-2'>
 
-                    <h4> Please enter your phone number to proceed: </h4> 
+                    <h5 className='text-center'> If you're satisfied with your choice of room, <br/>
+                        please enter your phone number to proceed. <br/>
+                        Otherwise, click on the <strong>Change room</strong> button to 
+                        select another room.
+                    </h5> 
                     <span>
                         <input className='form-control'
                                 type="tel"
-                                required='true'
+                                required={true}
                                 name='phone'
                                 value={ this.state.occupants_phone }
                                 onChange={this.handleChangePhone}
@@ -87,10 +103,21 @@ class RoomReservation extends React.Component {
                     <span className='mt-4'>
                         <Button path='payment'
                                 text='Proceed to payment'
+                                routeHandler={ this.toggleRoute }
                                 />
                     </span>
                 </section>
-
+                    {
+                        this.state.toggleRoute === true ?
+                        <Redirect to={{
+                            pathname: '/room-reservation/payment',
+                            state: {
+                                occupants_phone: this.state.occupants_phone
+                            }
+                        }} />
+                        :
+                        <Redirect to='/room-reservation' />
+                    }
             </div>
         )
     }

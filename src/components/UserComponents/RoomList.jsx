@@ -16,7 +16,7 @@ class RoomList extends React.Component{
 
             // This state-variable becomes true when the user clicks on the 
             // "Book room" button.
-            permitRoomBooking: false,
+            permitRoomBooking: '',
 
             chosenRoomDetails: {},
 

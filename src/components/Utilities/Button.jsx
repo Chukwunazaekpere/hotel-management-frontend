@@ -8,7 +8,8 @@ class Button extends React.Component{
     render(){
         const { action, text, path, submitRegistration,
                 submitLogin, logoutHandler, resetPassword,
-                showRoomList, directToBookRoomPage } = this.props;
+                showRoomList, directToBookRoomPage,
+                routeHandler } = this.props;
 
         return(
             <div className='btn-styles'>
@@ -35,7 +36,7 @@ class Button extends React.Component{
                         </Link>
                     :
                     path === 'payment' ?
-                        <Link to={`${path}`} onClick={ showRoomList } className='btn btn-payment'>
+                        <Link onClick={ routeHandler } className='btn btn-payment'>
                             {text}
                         </Link>
                     :

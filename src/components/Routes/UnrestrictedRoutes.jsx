@@ -12,6 +12,8 @@ import OccupantDetails from "../UserComponents/OccupantDetails";
 import RoomList from "../UserComponents/RoomList";
 import RoomReservation from '../UserComponents/RoomReservation';
 
+import {ReactPaypal} from '../Utilities/ReactPaypal';
+
 
 import { Route, Switch } from "react-router-dom";
 
@@ -30,6 +32,8 @@ export const UnrestrictedRoutes = () => {
                 <Route path='/occupant-details' component={OccupantDetails} />
                 <Route path='/roomlist' component={RoomList} />
                 <Route path='/room-reservation' component={ RoomReservation } />
+
+                <Route path={`room-reservation/payment`} component={ ReactPaypal } />
 
                 {/* For any other url which is undefined... */}
                 <Route component={Undefined} />
