@@ -10,11 +10,11 @@ export const Homepage = (props) => {
     }
 
     const authentication =  <div className="row">
-                                <div className="col">
+                                <div className="col-3">
                                     <Button path="Complete your reservation" />
                                 </div>
 
-                                <div className="col">
+                                <div className="col-3">
                                     <Button path="Make reservation" />
                                 </div>
                             </div>

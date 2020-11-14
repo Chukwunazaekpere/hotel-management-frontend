@@ -1,0 +1,28 @@
+
+.table_style {
+    background-color: tan;
+    width: 70%;
+    border-radius: 25px;
+    text-align: center;
+    margin-left: 15%;
+}
+
+span {
+    display: flex;
+    margin-top: 3%;
+}
+
+.table_style:hover {
+    background-color: beige;
+}
+
+h2 {
+    margin: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+tbody {
+    justify-items: center;
+    
+}
