@@ -1,6 +1,8 @@
 .reservation_style {
     display: flex;
     background-image: url(../../images/hotel\ 3.jpg);
+    background-position: center;
+    background-size: cover;
     min-height: 100vh;
 
 }

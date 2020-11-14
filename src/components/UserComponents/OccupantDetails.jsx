@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 
 import '../../index.css';
 import 'animate.css';
+import '../styles/occupantDetails.css';
 
 
 class RoomReservation extends React.Component {
@@ -91,8 +92,8 @@ class RoomReservation extends React.Component {
         <div className="row mt-3">
             <div className="col-2 ml-3 mr-5 mt-5"></div>
           
-            <div className="animate__animated animate__bounce col-5 ml-5">
-                <h3 className="col- mt-5 ml-5">
+            <div className="bg bg-textheading animate__animated animate__bounce col-5 ml-5">
+                <h3 className="animate__animated animate__bounce animate__repeat-3	3 col- mt-5 ml-5">
                   Please fill in the required details to see the available rooms.
                 </h3>
             </div>

@@ -1,0 +1,25 @@
+.bg-textheading {
+    display: inline-block;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: thistle;
+    font-style: italic;
+    font-weight: bold;
+    top: 0vh;
+    box-shadow: 5px 5px tan;
+    margin-top: 0;
+    transition: 0.75s ease-in;
+    left: 10vh;
+    height: min-content;
+    animation: 'swing';
+    animation-duration: 1s;
+}
+
+.bg-textheading:hover {
+    background-color: slategray;
+}
+
+.bg-textheading h3 {
+    animation: swing;
+    animation-duration: 1s;
+    --animate-repeat: 7;
+}

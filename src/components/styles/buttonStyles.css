@@ -8,6 +8,6 @@
 }
 
 .btn-styles {
-    border-bottom: tan;
+    display: inline-flex;
     box-shadow: 4px 4px teal;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import '../styles/buttonStyles.css';
+import 'animate.css';
 
 
 class Button extends React.Component{
