@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+.sidebar {
+
+    font-weight: bold;
+    min-width: 35vh;    
+    min-height: 100vh;
+    margin-top: 5px;
+    animation: swing;
+    margin-left: 20px;
+}
+
+.sidebar div {
+    margin-top: 10px;
+    margin-left: 10px;
+    padding-top: 15px;
+    border: 5px 5px cornflowerblue;
+
+    
+}
+
+.sidebar-menu {
+    display: flex;
+    margin-left: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-bottom: 5px 5px tan;
+}
+
+.sidebar-menu :hover {
+    background-color: cornflowerblue;
+    border-radius: 7px;
+    text-decoration: none;
+
+}
+
+span a {
+    text-decoration: none;
+    animation: bounce;
+}

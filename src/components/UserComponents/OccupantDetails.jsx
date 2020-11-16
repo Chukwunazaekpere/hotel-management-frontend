@@ -3,10 +3,9 @@ import Button from "../Utilities/Button";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-import '../../index.css';
-import 'animate.css';
-import '../styles/occupantDetails.css';
-
+import "../../index.css";
+import "animate.css";
+import "../styles/occupantDetails.css";
 
 class RoomReservation extends React.Component {
   constructor(props) {
@@ -90,50 +89,53 @@ class RoomReservation extends React.Component {
     return (
       <div>
         <div className="row mt-3">
-            <div className="col-2 ml-3 mr-5 mt-5"></div>
-          
-            <div className="bg bg-textheading animate__animated animate__bounce col-5 ml-5">
-                <h3 className="animate__animated animate__bounce animate__repeat-3	3 col- mt-5 ml-5">
-                  Please fill in the required details to see the available rooms.
-                </h3>
-            </div>
+          <div className="col-2 ml-3 mr-5 mt-5"></div>
+
+          <div className="bg bg-textheading animate__animated animate__bounce col-5 ml-5">
+            <h3 className="animate__animated animate__bounce animate__repeat-3	3 col- mt-5 ml-5">
+              Please fill in the required details to see the available rooms.
+            </h3>
+          </div>
         </div>
 
         <div className="row">
           <div className="col-4 ml-2 mr-1"></div>
-          
-          <div style={formStyle} className="animate__animated animate__swing col-4 m-3 form-group">
-            {formFields.map( field => (
+
+          <div
+            style={formStyle}
+            className="animate__animated animate__swing col-4 m-3 form-group"
+          >
+            {formFields.map((field) => (
               <div key={field}>
                 {/* place fields */}
                 <h5 className="mt-3">{field}:</h5>
                 {/* place any field error */}
                 <h4>{this.state.formErrorDetails[`${field.toLowerCase()}`]}</h4>
-                  <input
-                    className="pl-2 mb-3 form-control"
-                    type={
-                      field === "Email"
-                        ? "email"
-                        : field === "Phone"
-                        ? "tel"
-                        : field === "Duration"
-                        ? "number"
-                        : "text"
-                    }
-                    min={field === "Duration" ? 1 : ""}
-                    onChange={this.handleChange}
-                    value={this.state.roomReservationForm[field]}
-                    name={field}
-                    placeholder={
-                      field === "Duration"
-                        ? "Please, how long are you staying?"
-                        : field === "Email"
-                        ? "Please enter an active email address"
-                        : field === "Lastname"
-                        ? "Your surname, please."
-                        : ""
-                    }
-                  />                  
+                <input
+                  className="pl-2 mb-3 form-control"
+                  type={
+                    field === "Email"
+                      ? "email"
+                      : field === "Phone"
+                      ? "tel"
+                      : field === "Duration"
+                      ? "number"
+                      : "text"
+                  }
+                  min={field === "Duration" ? 1 : ""}
+                  onChange={this.handleChange}
+                  value={this.state.roomReservationForm[field]}
+                  name={field}
+                  placeholder={
+                    field === "Duration"
+                      ? "Please, how long are you staying?"
+                      : field === "Email"
+                      ? "Please enter an active email address"
+                      : field === "Lastname"
+                      ? "Your surname, please."
+                      : ""
+                  }
+                />
               </div>
             ))}
             <div className="mb-2">
@@ -146,21 +148,19 @@ class RoomReservation extends React.Component {
           </div>
         </div>
 
-        {
-          this.state.toggleRoomListDisplay === true ? (
-            // We're passing 'room_type' to the state props, 'cos we'll need
-            // to call the roomlist, which will then querry the backend
-            // for a request with the 'room_type'.
-            <Redirect
-              to={{
-                pathname: "/roomlist",
-                state: { occupant_details: this.state.roomReservationDetails },
-              }}
-            />
-          ) : (
-            <Redirect to="/occupant-details" />
-          )
-        }
+        {this.state.toggleRoomListDisplay === true ? (
+          // We're passing 'room_type' to the state props, 'cos we'll need
+          // to call the roomlist, which will then querry the backend
+          // for a request with the 'room_type'.
+          <Redirect
+            to={{
+              pathname: "/roomlist",
+              state: { occupant_details: this.state.roomReservationDetails },
+            }}
+          />
+        ) : (
+          <Redirect to="/occupant-details" />
+        )}
       </div>
     );
   }

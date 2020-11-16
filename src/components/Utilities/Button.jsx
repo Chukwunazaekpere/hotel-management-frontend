@@ -15,13 +15,7 @@ class Button extends React.Component{
             <div className='btn-styles'>
                 {
                     // Navigate user to "Log -in" page
-                    path === 'Complete your reservation' ?
-                        <Link to={`${path}`} className='btn btn-secondary'>{path}</Link>
-                    :
-                    // Navigate user to "Sign -in" page
-                    path === 'Make reservation' ?
-                        <Link to='/occupant-details' className='btn btn-secondary'>{path}</Link>
-                    :
+                    
                     path === 'Forgot password ?' ?
                         <Link to='/forgot-password' className='btn btn-secondary'>{path}</Link>
                     :

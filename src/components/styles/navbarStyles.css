@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-name {
+    display: inline-flex;
+    font-weight: bold ;
+    justify-content: flex-start;
+    margin-left: 30px;
+    margin-top: 5vh;
+}
+
+.button-styles {
+    display: inline-flex;
+}
+
+.navbar-buttons {
+    display: inline-flex;
+    margin-left: 27px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.button-styles span {
+    margin-left: 3px;
+    margin-right: 2px;
+}
+
+.nav-menu-bar {
+    font-size: 2rem;
+    margin-left: 43px;
+}

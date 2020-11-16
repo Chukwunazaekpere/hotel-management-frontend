@@ -14,11 +14,11 @@
     margin-bottom: 15%;
     left: 18%;
     background-color: cornflowerblue;
-    border: '30px dashed cornflowerblue';
-    border-color: '#282c34';
-    border-radius: '40px';
-    color: 'black';
-    font-family: "Georgia, Verdana, Geneva, Tahoma, sans-serif";
+    border: 30px dashed cornflowerblue;
+    border-color: #282c34;
+    border-radius: 40px;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     min-height: 15%;
     width: 40%;
     justify-content: center;

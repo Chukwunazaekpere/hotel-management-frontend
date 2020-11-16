@@ -11,7 +11,7 @@
     left: 10vh;
     height: min-content;
     animation: 'swing';
-    animation-duration: 1s;
+    animation-duration: 1.5s;
 }
 
 .bg-textheading:hover {
@@ -21,5 +21,5 @@
 .bg-textheading h3 {
     animation: swing;
     animation-duration: 1s;
-    --animate-repeat: 7;
+    --animate-repeat: 10;
 }

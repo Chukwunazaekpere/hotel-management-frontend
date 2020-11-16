@@ -1,62 +1,85 @@
-import React from 'react';
-import { NavLink } from "react-router-dom";
-import Button from './Button';
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import Button from "./Button";
 
-// import { Prompt } from "react-router-dom";
-import authstate from "../Authentication/AuthState";
+import "../styles/navbarStyles.css";
+import * as FaIcons from 'react-icons/fa'
+import {Sidebar} from './sidebar'
 
-class  Navbar extends React.Component{
-    
-    handleLogout = () => {
-        console.log("log out")
+
+class Navbar extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            sidebar: false
+        }
+    };
+
+    showSidebar = () => {
+        this.setState({ sidebar: !this.state.sidebar })
     }
 
-    render(){
-        const navLinkItems = ["Home", "Services", "About", "Contact-us"] 
-        console.log(this.props.children)
-        const activeItem = {
-            // backgroundColor: 'teal',
-            fontStyle: "italic",
-            fontWeight: 'bold'
-        }
+  render() {
+    const navLinkItems = ["Home", "Services", "About", "Contact-us"];
 
-        const navbarStyle = {
-            backgroundColor: 'teal',
-            minHeight: '15vh',
-            alignItems: 'center',
-        }
-        
-        return(
-            <div style={navbarStyle} className='row'>
+    const activeItem = {
+      fontStyle: "italic",
+      fontWeight: "bold",
+    };
 
-                <div className='col-4 mr-2 ml-2 mt-3'>
+    const navbarStyle = {
+      backgroundColor: "teal",
+      minHeight: "15vh",
+    };
+
+    const navRoutes = ['/', 'services', 'about', 'contact-us']
+
+    return (
+        <React.Fragment>
+            <div style={navbarStyle} className="row">
+                <section className="site-name col-md-4">
                     <h3>Hotel Celestial</h3>
-                </div>
+                </section>
 
-                {
-                    navLinkItems.map( linkItem => 
-                        <div key={linkItem}>
-                            <NavLink to={ linkItem !== "Home"? linkItem : "/"} className='text-center mr-2 mb-2 mt-3 btn btn-info' activeStyle={activeItem}>
-                                {linkItem}
-                            </NavLink>
-                        </div>
-                    )
-                }
-                        
-                <div className='col-4 text-right mt-3 ml-5'>
+                <section className='navbar-buttons col-md-6'>
                     {
-                        // the logout button can only be rendered when the user is
-                        // authenticated
-                        authstate.isAuthenticated() ?
-                        <Button action='Log out' logoutHandler={this.handleLogout} />
-                        :
-                        <div></div>
+                        !this.state.sidebar ?
+                            <section className='button-styles'>
+                                {navLinkItems.map( (linkItem, index) => (
+                                    <span key={linkItem}>
+                                        <NavLink to={ navRoutes[index] }
+                                            className="text-center btn btn-info" activeStyle={activeItem}>
+                                            {linkItem}
+                                        </NavLink>
+                                    </span>
+                                ))}
+                            </section>
+                            :
+                            null
                     }
-                </div>
+                </section>
+                
+                <section className='nav-menu-bar'>
+                    <Link to='#'>
+                        <FaIcons.FaBars onClick={ this.showSidebar }/>
+                    </Link>
+                </section>
+
             </div>
-        );
-    }
-            
+
+            <div className='row sidebar'>
+                {
+                    this.state.sidebar ?
+                    <Sidebar />
+                    :
+                    null
+                }
+            </div>
+        </React.Fragment>
+
+    );
+  }
 }
 
 export default Navbar;

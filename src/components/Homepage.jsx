@@ -9,28 +9,20 @@ export const Homepage = (props) => {
         alignItems: "center"
     }
 
-    const authentication =  <div className="row">
-                                <div className="col-3">
-                                    <Button path="Complete your reservation" />
-                                </div>
-
-                                <div className="col-3">
-                                    <Button path="Make reservation" />
-                                </div>
-                            </div>
+   
     //=======================================================================
 
     if(props.match.path === '/'){
 
         return (
-            <div className='' style={homeStyle}>
+            <div style={homeStyle}>
                 <div className='row'>
-                    <div className=' col'><Navbar /></div>
+                    <div className='col'><Navbar /></div>
                 </div>
                 
                 {/* Authentication */}
                 <div>
-                    {authentication}
+                    {/* {authentication} */}
                 </div>
                 <div className='row'>
                     <div className='col-5 mt-5'></div>
@@ -42,7 +34,7 @@ export const Homepage = (props) => {
         return(
             <div>
                 {/* Authentication */}
-                {authentication}
+                {/* {authentication} */}
             </div>
         )
     }
