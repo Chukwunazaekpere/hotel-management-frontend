@@ -50,7 +50,7 @@ class Button extends React.Component{
                     action === 'Book room' ?
                     <button className='btn btn-info' onClick={ directToBookRoomPage }>{action}</button>
                     :
-                    <Link to='/' className='btn btn-primary'>Go Back To Homepage</Link>
+                    <Link to={['/', '/celestial']} className='btn btn-primary'>Go Back To Homepage</Link>
 
                 }
                 

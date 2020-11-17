@@ -21,7 +21,7 @@ export const UnrestrictedRoutes = () => {
     return(
         <div>
             <Switch>
-                <Route path='/' exact component={ Homepage } />
+                <Route path={['/', '/celestial']} exact component={ Homepage } />
                 <Route path='/login' component={ Login } />
                 <Route path='/signin' component={ Signin } />
                 <Route path='/forgot-password' component={ForgotPassword} />

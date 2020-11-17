@@ -12,7 +12,7 @@ export const Homepage = (props) => {
     const showSidebar = () => setSidebar(!sidebar)
 
     //=======================================================================
-    if(props.match.path === '/'){
+    if(props.match.path === '/' || props.match.path === '/celestial'){
 
         return (
             <div className='welcome-screen'>
