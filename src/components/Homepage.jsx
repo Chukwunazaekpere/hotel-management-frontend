@@ -7,10 +7,6 @@ import { Sidebar } from './Utilities/sidebar';
 
 
 export const Homepage = (props) => {
-    const homeStyle = {
-        justifyContent: "center",
-        alignItems: "center"
-    }
 
     const [sidebar, setSidebar] = useState(false)
     const showSidebar = () => setSidebar(!sidebar)
@@ -19,7 +15,7 @@ export const Homepage = (props) => {
     if(props.match.path === '/'){
 
         return (
-            <div style={homeStyle} className='welcome-screen'>
+            <div className='welcome-screen'>
                 <section className='row navbar-section'>
                     <section className='col'>
                         <Navbar sidebarHandler={showSidebar} isToggled={sidebar}/>
@@ -42,6 +38,7 @@ export const Homepage = (props) => {
                             <h1 className='welcome-text animate__animated animate__flash animate__infinite mt-5'>
                                 Hospitality, Kingly...
                             </h1>
+                            
                         </span>
                     </section>
             </div>

@@ -1,6 +1,18 @@
-.bg-textheading {
-    display: inline-block;
+.background-style {
+    display: flex;
+    flex-flow: column;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url(../../images/hotel\ 3.jpg);
+    background-size: cover;
+    background-position: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    min-height: 100vh;
+
+}
+
+.bg-textheading {
+    display: flex;
+    flex-flow: column wrap;
+
     color: thistle;
     font-style: italic;
     font-weight: bold;
@@ -8,7 +20,6 @@
     box-shadow: 5px 5px tan;
     margin-top: 0;
     transition: 0.75s ease-in;
-    left: 10vh;
     height: min-content;
     animation: 'swing';
     animation-duration: 1.5s;
@@ -23,3 +34,24 @@
     animation-duration: 1s;
     --animate-repeat: 10;
 }
+
+.form-style {
+    display: flex;
+    flex-flow: column wrap;
+    min-width: 200vh;
+    color: black;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center
+  }; 
+
+.input-fields div h5{
+    display: flex;
+    flex-flow: column wrap;
+    margin-bottom: 10vh;
+    color: ghostwhite;
+  }
+
+  .submit-button {
+      margin-bottom: 25px;
+  }

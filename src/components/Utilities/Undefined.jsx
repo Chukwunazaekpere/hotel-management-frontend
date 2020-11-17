@@ -8,6 +8,8 @@ export const Undefined = () =>{
         minHeight: "100vh",
         fontWeight: 'bold',
         fontStyle: "italic",
+        color: 'white',
+        fontWeight: 'bold'
       }
 
     return(
