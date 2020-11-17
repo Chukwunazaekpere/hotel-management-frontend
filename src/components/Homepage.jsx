@@ -24,22 +24,18 @@ export const Homepage = (props) => {
 
 
                     <section className='row'>
-                        <span >
-                            <span className='sidebar col-md-6'>
-                                {
-                                    sidebar ?
-                                        <ul>
-                                            <li><Sidebar /></li>
-                                        </ul>
-                                        :
-                                        null
+                        <span className='sidebar col-md-3'>
+                            {
+                                sidebar ?
+                                    <li><Sidebar /></li>
+                                    :
+                                    null
                                 }
-                            </span>
-                            <h1 className='welcome-text animate__animated animate__flash animate__infinite mt-5'>
-                                Hospitality, Kingly...
-                            </h1>
-                            
                         </span>
+
+                        <h1 className='col welcome-text animate__animated animate__flash animate__infinite mt-5'>
+                            Hospitality, Kingly...
+                        </h1>
                     </section>
             </div>
         );

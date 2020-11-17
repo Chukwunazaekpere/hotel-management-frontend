@@ -15,7 +15,6 @@ class Button extends React.Component{
             <div className='btn-styles'>
                 {
                     // Navigate user to "Log -in" page
-                    
                     path === 'Forgot password ?' ?
                         <Link to='/forgot-password' className='btn btn-secondary'>{path}</Link>
                     :
