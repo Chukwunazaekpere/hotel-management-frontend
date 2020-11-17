@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(../../images/hotel\ 2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar-section {
+    display: flex;
+    min-width: 100%;
+}
+
+.welcome-screen {
+    display: flex;
+    flex-flow: column;
+}
+
+.welcome-text {
+    color: ghostwhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --animate-duration: 5s;
+} 
+
+
+.sidebar{
+    width: 150%;
+    margin-left: -33%;
+
+}
+
+
+span ul {
+    list-style: none;
+    
+
+}
+
+section span h1{
+    display: flex;
+    min-width: 100%;
+    margin-left: 20px;
+    font-size: 3rem;
+    font-weight: bold;
+
+}

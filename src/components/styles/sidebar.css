@@ -6,41 +6,28 @@
     
 }
 
-.sidebar {
-
-    font-weight: bold;
-    min-width: 35vh;    
-    min-height: 100vh;
-    margin-top: 5px;
-    animation: swing;
-    margin-left: 20px;
-}
-
-.sidebar div {
-    margin-top: 10px;
-    margin-left: 10px;
-    padding-top: 15px;
-    border: 5px 5px cornflowerblue;
-
-    
-}
 
 .sidebar-menu {
     display: flex;
-    margin-left: 10px;
+    /* margin-left: -3rem; */
     justify-content: flex-start;
-    align-items: flex-start;
-    border-bottom: 5px 5px tan;
+    align-items: flex-end;
+    border-left: 4px solid tan;
+    border-bottom: 4px solid tan;
+    border-radius: 10px;
 }
 
 .sidebar-menu :hover {
     background-color: cornflowerblue;
-    border-radius: 7px;
+    border-radius: 5px;
     text-decoration: none;
 
 }
 
 span a {
+    /* margin-left: 2em; */
     text-decoration: none;
-    animation: bounce;
+    font-weight: bold;
+    color: ghostwhite;
+
 }

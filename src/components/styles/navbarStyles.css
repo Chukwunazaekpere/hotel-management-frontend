@@ -8,26 +8,38 @@
 
 .site-name {
     display: inline-flex;
+    color: cornflowerblue;
     font-weight: bold ;
     justify-content: flex-start;
     margin-left: 30px;
     margin-top: 5vh;
 }
 
-.button-styles {
-    display: inline-flex;
-}
+
 
 .navbar-buttons {
     display: inline-flex;
     margin-left: 27px;
     justify-content: flex-start;
     align-items: center;
+
+}
+
+.button-styles {
+    display: inline-flex;
+
 }
 
 .button-styles span {
     margin-left: 3px;
     margin-right: 2px;
+    transition: 0.5ms ease-in;
+
+}
+
+.button-styles span:hover {
+    background-color: blueviolet;
+    transform: translateY(10px)
 }
 
 .nav-menu-bar {
