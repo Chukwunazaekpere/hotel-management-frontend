@@ -24,7 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    --animate-duration: 5s;
+    --animate-duration: 10s;
     font-weight: bolder;
     font-size: 3rem;
 } 
