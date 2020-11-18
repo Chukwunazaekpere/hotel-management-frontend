@@ -12,7 +12,6 @@ import OccupantDetails from "../UserComponents/OccupantDetails";
 import RoomList from "../UserComponents/RoomList";
 import RoomReservation from '../UserComponents/RoomReservation';
 
-
 import { Route, Switch } from "react-router-dom";
 
 
@@ -22,14 +21,15 @@ export const UnrestrictedRoutes = () => {
         <div>
             <Switch>
                 <Route path={['/', '/celestial']} exact component={ Homepage } />
-                <Route path='/login' component={ Login } />
-                <Route path='/signin' component={ Signin } />
-                <Route path='/forgot-password' component={ForgotPassword} />
-                <Route path='/username-login' component={UsernameLogin} />
+                <Route path='/celestial/login' component={ Login } />
+                <Route path='/celestial/signin' component={ Signin } />
+                <Route path='/celestial/forgot-password' component={ForgotPassword} />
+                <Route path='/celestial/username-login' component={UsernameLogin} />
 
-                <Route path='/occupant-details' component={OccupantDetails} />
-                <Route path='/roomlist' component={RoomList} />
-                <Route path='/room-reservation' component={ RoomReservation } />
+                <Route path='/celestial/occupant-details' component={OccupantDetails} />
+                <Route path='/celestial/roomlist' component={RoomList} />
+                <Route path='/celestial/room-reservation' component={ RoomReservation } />
+
 
                 {/* For any other url which is undefined... */}
                 <Route component={Undefined} />

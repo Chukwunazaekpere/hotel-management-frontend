@@ -1,17 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
 import "../styles/navbarStyles.css";
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai';
 
-import {Sidebar} from './sidebar'
 import 'animate.css';
 
 
-class Navbar extends React.Component {
-
-  render() {
+export const Navbar = (props) => {
+   
     const navLinkItems = ["Home", "Services", "About", "Contact-us"];
 
     const activeItem = {
@@ -19,11 +17,9 @@ class Navbar extends React.Component {
       fontWeight: "bold",
     };
 
-
-    const navRoutes = ['/', 'services', 'about', 'contact-us']
     // toggles the sidebar
-    const { sidebarHandler, isToggled } = this.props;
-    console.log("\n\t value: ", sidebarHandler)
+    const { sidebarHandler, isToggled, currentViewName} = props;
+
     return (
         <React.Fragment>
             <div className="row">
@@ -37,10 +33,12 @@ class Navbar extends React.Component {
                     {
                         !isToggled ?
                             <section className='button-styles'>
-                                {navLinkItems.map( (linkItem, index) => (
+                                {navLinkItems.map( linkItem => (
                                     <span key={linkItem}>
-                                        <NavLink to={ navRoutes[index] }
-                                            className="btn text-white" activeStyle={activeItem}>
+                                        <NavLink to='#'
+                                            onClick={ () => currentViewName(linkItem) } 
+                                            className="btn text-white" 
+                                            activeStyle={activeItem}>
                                             {linkItem}
                                         </NavLink>
                                     </span>
@@ -74,7 +72,6 @@ class Navbar extends React.Component {
         </React.Fragment>
 
     );
-  }
 }
 
 export default Navbar;

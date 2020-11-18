@@ -3,13 +3,21 @@ import Button from "./Utilities/Button";
 import Navbar from "./Utilities/Navbar";
 
 import './styles/homepageStyles.css';
-import { Sidebar } from './Utilities/sidebar';
+import { Sidebar } from './Utilities/Sidebar';
+
+import { About } from './NavbarComponents/Aboutus';
+import ContactUs from './NavbarComponents/Contactus';
+import { Services } from './NavbarComponents/Services';
+import CompleteReservations  from './UserComponents/CompleteReservations';
 
 
 export const Homepage = (props) => {
 
     const [sidebar, setSidebar] = useState(false)
     const showSidebar = () => setSidebar(!sidebar)
+
+    const [currentView, setCurrentView] = useState('')
+    const changeView = (viewName) => setCurrentView(`${viewName}`)
 
     //=======================================================================
     if(props.match.path === '/' || props.match.path === '/celestial'){
@@ -18,7 +26,16 @@ export const Homepage = (props) => {
             <div className='welcome-screen'>
                 <section className='row navbar-section'>
                     <section className='col'>
-                        <Navbar sidebarHandler={showSidebar} isToggled={sidebar}/>
+                        {/* ****The currentViewName is passed as a prop to the Navbar
+                        component so as to the switch views (about, services and contact-us)
+                        without changing the url - path.
+                        ***** The isToggled prop is as well passed to the Navbar cmponent
+                        so as to aid in switching the sidebar component, when the horizontal -
+                        bars on the Navbar component is toggled. The sidebarHandler
+                        is the function that needs to be called in order to change the sidebar - 
+                        state  */}
+                        <Navbar sidebarHandler={showSidebar} isToggled={sidebar}
+                                currentViewName={changeView} />
                     </section>
                 </section>
 
@@ -27,7 +44,8 @@ export const Homepage = (props) => {
                         <span className='sidebar col-md-3'>
                             {
                                 sidebar ?
-                                    <li><Sidebar /></li>
+                                    <Sidebar sidebarHandler={showSidebar}
+                                             currentViewName={changeView} />
                                     :
                                     null
                                 }
@@ -37,6 +55,22 @@ export const Homepage = (props) => {
                             Hospitality, Kingly...
                         </h1>
                     </section>
+
+                    {
+                        currentView === 'About' ?
+                         <About />
+                        :
+                        currentView === 'Contact-us' ?
+                         <ContactUs />
+                        :
+                        currentView === 'Services' ?
+                         <Services />
+                        :
+                        currentView === 'Services' ?
+                         <CompleteReservations />
+                        :
+                        null
+                    }
             </div>
         );
     }

@@ -1,0 +1,15 @@
+.template-styling {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+                     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.field-title {
+    color: ghostwhite;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+}

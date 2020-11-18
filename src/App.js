@@ -7,11 +7,11 @@ import { UnrestrictedRoutes } from "./components/Routes/UnrestrictedRoutes";
 
 export const App = () => {
   return (
-    <div className=" img App">
+    <div >
         <Switch>
-          <UnrestrictedRoutes exact />
+          <UnrestrictedRoutes />
 
-          <RestrictedRoutes />
+          {/* <RestrictedRoutes /> */}
       </Switch>
     </div>
   );

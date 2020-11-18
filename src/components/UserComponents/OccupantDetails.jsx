@@ -52,7 +52,7 @@ class RoomReservation extends React.Component {
     event.preventDefault();
     // Submit users data in order to reserve room(s)
     axios
-      .post("http://localhost:8000/create-occupant/", {
+      .post("http://localhost:8000/celestial/create-occupant/", {
         firstname: this.state.roomReservationDetails.Firstname,
         lastname: this.state.roomReservationDetails.Lastname,
         email: this.state.roomReservationDetails.Email,
@@ -80,7 +80,7 @@ class RoomReservation extends React.Component {
     return (
         <div className='background-style'>
             <section className="bg bg-textheading col-md-5">
-                <h3 className="animate__animated animate__pulse animate__repeat-3  3 col- mt-5 ml-5">
+                <h3 className="animate__animated animate__pulse col- mt-5 ml-5">
                     Please fill in the required details to see the available rooms.
                 </h3>
             </section>
@@ -133,7 +133,7 @@ class RoomReservation extends React.Component {
                 }}
             />
             ) : (
-            <Redirect to="/occupant-details" />
+            <Redirect to="/celestial/occupant-details" />
             )}
         </div>
     );
